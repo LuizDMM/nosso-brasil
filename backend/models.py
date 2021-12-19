@@ -9,7 +9,7 @@ class Partido(models.Model):
     lider = models.CharField(max_length=300)
     logo = models.ImageField()
 
-    def _str_(self):
+    def __str__(self):
         return self.nome
 
 
@@ -25,19 +25,19 @@ class Deputado(models.Model):
     condicao_eleitoral = models.CharField(max_length=300)
     cpf = models.CharField(max_length=11)
     sexo = models.CharField(max_length=1)
-    website = models.URLField()
+    website = models.URLField(null=True, blank=True)
     data_nascimento = models.DateField()
-    data_falecimento = models.DateField()
+    data_falecimento = models.DateField(null=True, blank=True)
     uf_nascimento = models.CharField(max_length=2)
     municipio_nascimento = models.CharField(max_length=300)
     escolaridade = models.CharField(max_length=300)
     foto = models.ImageField()
 
-    def _str_(self):
-        return self.name
+    def __str__(self):
+        return self.nome
 
 
-class Despesas(models.Model):
+class Despesa(models.Model):
     deputado = models.ForeignKey('Deputado', on_delete=models.CASCADE)
     tipo_despesa = models.TextField()
     cod_documento = models.IntegerField()
@@ -47,6 +47,6 @@ class Despesas(models.Model):
     nome_fornecedor = models.CharField(max_length=300)
     valor_liquido = models.FloatField()
 
-    def _str_(self):
+    def __str__(self):
         return self.tipo_despesa
 
