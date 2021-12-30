@@ -1,5 +1,6 @@
 import hero_img from '../hero_img.svg'
 import { Button } from 'reactstrap'
+import { Link } from 'react-router-dom'
 
 function Hero() {
   return (
@@ -10,7 +11,7 @@ function Hero() {
           <p>
             Tenha em tempo real as informações de todos os deputados do Brasil.
           </p>
-          <Button color="primary" size="lg" className="text-white">
+          <Button color="primary" size="lg" className="text-white" tag={Link} to="/deputados">
             Comece aqui
           </Button>
         </div>
