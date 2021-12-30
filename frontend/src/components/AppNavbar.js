@@ -8,6 +8,7 @@ import {
   NavItem,
   NavLink
 } from 'reactstrap'
+import { Link } from 'react-router-dom'
 
 export default function AppNavbar() {
   const [isOpen, setIsOpen] = React.useState(false)
@@ -15,15 +16,15 @@ export default function AppNavbar() {
   return (
     <div>
       <Navbar container light expand="md">
-        <NavbarBrand href="/">Nosso Brasil</NavbarBrand>
+        <NavbarBrand tag={Link} to="/">Nosso Brasil</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="#">Deputados</NavLink>
+              <NavLink tag={Link} to="/deputados">Deputados</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#">Partidos</NavLink>
+              <NavLink tag={Link} to="/partidos">Partidos</NavLink>
             </NavItem>
           </Nav>
         </Collapse>
