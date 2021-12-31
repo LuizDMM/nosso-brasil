@@ -9,6 +9,7 @@ import {
   NavLink
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
+import logo from '../logo.svg'
 
 export default function AppNavbar() {
   const [isOpen, setIsOpen] = React.useState(false)
@@ -16,15 +17,15 @@ export default function AppNavbar() {
   return (
     <div>
       <Navbar container light expand="md">
-        <NavbarBrand tag={Link} to="/">Nosso Brasil</NavbarBrand>
+        <NavbarBrand tag={Link} to="/"><img src={logo} /></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink tag={Link} to="/deputados">Deputados</NavLink>
+          <Nav navbar>
+            <NavItem className="align-middle">
+              <NavLink tag={Link} to="/deputados"><strong>Deputados</strong></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to="/partidos">Partidos</NavLink>
+              <NavLink tag={Link} to="/partidos"><strong>Partidos</strong></NavLink>
             </NavItem>
           </Nav>
         </Collapse>

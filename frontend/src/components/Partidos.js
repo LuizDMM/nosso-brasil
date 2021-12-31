@@ -1,6 +1,6 @@
 import axios from 'axios'
+import PartidoCard from './PartidoCard'
 import React from 'react'
-import { Table } from 'reactstrap'
 
 class Partidos extends React.Component {
   constructor(props) {
@@ -23,12 +23,7 @@ class Partidos extends React.Component {
 
   renderPartidos() {
     return this.state.partidos.map((partido) => (
-      <tr key={partido.api_id}>
-        <td>{partido.api_id}</td>
-        <td>{partido.sigla}</td>
-        <td>{partido.nome}</td>
-        <td>{partido.lider}</td>
-      </tr>
+      <PartidoCard partido={partido} />
     ))
   }
 
@@ -37,16 +32,10 @@ class Partidos extends React.Component {
 
     return (
       <div className="Partidos">
-        <div className="container">
-          <Table hover responsive striped>
-            <thead>
-              <th scope="col">ID</th>
-              <th scope="col">Sigla</th>
-              <th scope="col">Nome</th>
-              <th scope="col">Líder</th>
-            </thead>
-            <tbody>{this.renderPartidos()}</tbody>
-          </Table>
+        <div className="container ">
+            <div className="row g-2">
+                {this.renderPartidos()}
+            </div>
         </div>
       </div>
     )
