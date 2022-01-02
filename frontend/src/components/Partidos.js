@@ -31,12 +31,8 @@ class Partidos extends React.Component {
     document.title = 'Partidos - Nosso Brasil'
 
     return (
-      <div className="Partidos">
-        <div className="container ">
-            <div className="row g-2">
-                {this.renderPartidos()}
-            </div>
-        </div>
+      <div className="container ">
+        <div className="row g-2">{this.renderPartidos()}</div>
       </div>
     )
   }

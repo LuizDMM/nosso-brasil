@@ -1,13 +1,33 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
 import './custom.scss'
 import App from './App'
-import { BrowserRouter as Router } from 'react-router-dom'
+import Deputado from './components/Deputado'
+import Deputados from './components/Deputados'
+import DeputadosIndex from './components/DeputadosIndex'
+import HomePage from './components/HomePage'
+import Partido from './components/Partido'
+import Partidos from './components/Partidos'
+import PartidosIndex from './components/PartidosIndex'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 ReactDOM.render(
   <Router>
     <React.StrictMode>
-      <App />
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<HomePage />} />
+          <Route path="/deputados" element={<DeputadosIndex />}>
+            <Route index element={<Deputados />} />
+            <Route path="/deputados/:id" element={<Deputado />} />
+          </Route>
+          <Route path="/deputados/:id" element={<Deputados />} />
+          <Route path="/partidos" element={<PartidosIndex />}>
+            <Route index element={<Partidos />} />
+            <Route path="/partidos/:id" element={<Partido />} />
+          </Route>
+        </Route>
+      </Routes>
     </React.StrictMode>
   </Router>,
 
