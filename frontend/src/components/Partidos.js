@@ -32,6 +32,7 @@ class Partidos extends React.Component {
 
     return (
       <div className="container ">
+        <h1 className="text-center">Partidos</h1>
         <div className="row g-2">{this.renderPartidos()}</div>
       </div>
     )

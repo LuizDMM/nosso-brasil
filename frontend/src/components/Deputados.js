@@ -32,6 +32,7 @@ export default class Deputados extends React.Component {
 
     return (
         <div className="container">
+          <h1 className="text-center">Deputados</h1>
           <div className="row g-2 ">{this.renderDeputados()}</div>
         </div>
     )
