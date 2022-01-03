@@ -1,10 +1,13 @@
 import axios from 'axios'
+import DeputadoData from './DeputadoData'
+import DespesasDeputado from './DespesasDeputado'
 import React from 'react'
-import { Link, Outlet, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Nav, NavItem, NavLink } from 'reactstrap'
 
 export default function Deputado() {
   let params = useParams()
+  let tab = 'dados'
   const [state, setState] = React.useState([])
 
   React.useEffect(() => {
@@ -15,6 +18,22 @@ export default function Deputado() {
   }, [])
 
   document.title = `${state.map((dep) => dep.nome)} - Nosso Brasil`
+
+  function handleTabChange() {
+    if (tab == 'dados') {
+      tab = 'despesas'
+    } else if (tab == 'despesas') {
+      tab = 'dados'
+    }
+  }
+
+  function handleTab() {
+    if (tab == 'dados') {
+      return <DeputadoData deputado={state[0]} />
+    } else if (tab == 'despesas') {
+      return <DespesasDeputado deputado={state[0]} />
+    }
+  }
 
   return (
     <div className="container">
@@ -33,13 +52,27 @@ export default function Deputado() {
           </div>
           <Nav tabs>
             <NavItem>
-              <NavLink className="active" tag={Link} to={`/deputados/${params.id}`}>Dados Completos</NavLink>
+              <NavLink
+                className={tab == 'dados' ? 'active' : ''}
+                onClick={() => {
+                  handleTabChange()
+                }}
+              >
+                Dados Completos
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to={`/deputados/${params.id}/despesas`} tag={Link}>Despesas</NavLink>
+              <NavLink
+                className={tab == 'despesas' ? 'active' : ''}
+                onClick={() => {
+                  handleTabChange()
+                }}
+              >
+                Despesas
+              </NavLink>
             </NavItem>
           </Nav>
-          <div><Outlet /></div>
+          <div className="content">{handleTab()}</div>
         </div>
       ))}
     </div>
