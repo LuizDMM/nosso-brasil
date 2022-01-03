@@ -5,7 +5,7 @@ export default function PartidoCard(props) {
   return (
     <div className="col-lg-4 p-3" key={props.partido.api_id}>
       <LinkContainer to={`/partidos/${props.partido.api_id}`}>
-        <Card className="text-center h-100">
+        <Card className="text-center h-100 CardWithEffect">
           <CardBody>
             <CardTitle tag="h5">
               <strong>{props.partido.sigla}</strong>

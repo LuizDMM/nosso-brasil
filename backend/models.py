@@ -25,7 +25,7 @@ class Deputado(models.Model):
     api_id = models.IntegerField(unique=True)
     nome = models.CharField(max_length=300)
     nome_civil = models.CharField(max_length=300)
-    partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
+    partido = models.ForeignKey(Partido, related_name='membros', on_delete=models.CASCADE)
     sigla_uf = models.CharField(max_length=2)
     email = models.EmailField()
     situacao = models.CharField(max_length=300)

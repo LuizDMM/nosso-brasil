@@ -7,9 +7,10 @@ from .models import Deputado, Despesa, Partido
 # Create your views here.
 class DeputadoView(viewsets.ReadOnlyModelViewSet):
     serializer_class = DeputadoSerializer
+
     def get_queryset(self):
         queryset = Deputado.objects.all()
-        api_id = self.request.query_params.get('api_id')
+        api_id = self.request.query_params.get("api_id")
         if api_id is not None:
             queryset = queryset.filter(api_id=api_id)
         return queryset
@@ -22,4 +23,10 @@ class DespesaView(viewsets.ReadOnlyModelViewSet):
 
 class PartidoView(viewsets.ReadOnlyModelViewSet):
     serializer_class = PartidoSerializer
-    queryset = Partido.objects.all()
+
+    def get_queryset(self):
+        queryset = Partido.objects.all()
+        api_id = self.request.query_params.get("api_id")
+        if api_id is not None:
+            queryset= queryset.filter(api_id=api_id)
+        return queryset
