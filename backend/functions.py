@@ -22,6 +22,23 @@ class CamaraAPI:
             "dados"
         ]
 
+    # Get all despesas from specific deputado from the last six months
+    def get_deputado_despesas(self, deputado_id):
+        link = urljoin(
+            self.URL,
+            f"deputados/{deputado_id}/despesas?ordem=desc&ordenarPor=dataDocumento",
+        )
+        next_page = True
+        data_to_return = []
+        while next_page:
+            response = self.session.get(link)
+            data_to_return.extend(response.json())
+            if response.links.get("next"):
+                link = response.links["next"]["url"]
+            else:
+                next_page = False
+        return data_to_return
+
     # Get all data from all 'deputados'
     # ATENTION: THIS FUNCTIONS IS VERY SLOW BECAUSE OF THE CAMERA API LATENCY
     def gel_all_deputados_data(self):
@@ -85,6 +102,8 @@ class APIsDataHandler:
             foto=deputado["ultimoStatus"]["urlFoto"],
         )
 
+    # Create "Despesa" object based on the models, from the CamaraAPI method response
+    
     # Create "Partido" object based on the models, from the CameraAPI method response
     def create_partido(self, partido):
         return Partido(

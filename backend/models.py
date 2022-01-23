@@ -6,7 +6,7 @@ class Partido(models.Model):
     sigla = models.CharField(max_length=300, unique=True)
     nome = models.CharField(max_length=300)
     lider = models.CharField(max_length=300, blank=True, null=True)
-    logo = models.ImageField()
+    logo = models.URLField()
 
     def __str__(self):
         return self.nome
@@ -38,7 +38,7 @@ class Deputado(models.Model):
     uf_nascimento = models.CharField(max_length=2, null=True, blank=True)
     municipio_nascimento = models.CharField(max_length=300)
     escolaridade = models.CharField(max_length=300, null=True, blank=True)
-    foto = models.ImageField()
+    foto = models.URLField()
 
     def __str__(self):
         return self.nome
