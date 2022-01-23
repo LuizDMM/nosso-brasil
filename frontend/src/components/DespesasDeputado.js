@@ -1,3 +1,3 @@
-export default function DespesasDeputado() {
-    return (<p>It's working!</p>)
+export default function DespesasDeputado({ deputado }) {
+  return <p>It's working! {deputado.nome}</p>
 }

@@ -7,7 +7,7 @@ import { Nav, NavItem, NavLink } from 'reactstrap'
 
 export default function Deputado() {
   let params = useParams()
-  let tab = 'dados'
+  const [tab, setTab] = React.useState('dados')
   const [state, setState] = React.useState([])
 
   React.useEffect(() => {
@@ -21,9 +21,9 @@ export default function Deputado() {
 
   function handleTabChange() {
     if (tab == 'dados') {
-      tab = 'despesas'
+      setTab('despesas')
     } else if (tab == 'despesas') {
-      tab = 'dados'
+      setTab('dados')
     }
   }
 
@@ -50,7 +50,7 @@ export default function Deputado() {
               </h2>
             </div>
           </div>
-          <Nav tabs>
+          <Nav tabs className="mt-5">
             <NavItem>
               <NavLink
                 className={tab == 'dados' ? 'active' : ''}
