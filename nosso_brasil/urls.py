@@ -21,7 +21,6 @@ from backend import views
 
 router = routers.DefaultRouter()
 router.register(r'deputados', views.DeputadoView, 'deputado')
-router.register(r'despesas', views.DespesaView, 'despesas')
 router.register(r'partidos', views.PartidoView, 'partidos')
 
 urlpatterns = [

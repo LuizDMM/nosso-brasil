@@ -101,8 +101,6 @@ class APIsDataHandler:
             escolaridade=deputado["escolaridade"],
             foto=deputado["ultimoStatus"]["urlFoto"],
         )
-
-    # Create "Despesa" object based on the models, from the CamaraAPI method response
     
     # Create "Partido" object based on the models, from the CameraAPI method response
     def create_partido(self, partido):

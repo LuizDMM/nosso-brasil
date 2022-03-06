@@ -7,11 +7,11 @@ export default function DeputadoData({ deputado }) {
   }
 
   return (
-    <div className="container">
-      <Table>
+    <div className="container mt-2">
+      <Table responsive>
         <tbody>
           <tr className="text-center">
-            <th colSpan="4">Dados Pessoais</th>
+            <th colSpan="4"><h3>Dados Pessoais</h3></th>
           </tr>
           <tr>
             <th>Nome Civil</th>

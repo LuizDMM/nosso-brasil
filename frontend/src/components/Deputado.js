@@ -1,13 +1,11 @@
 import axios from 'axios'
 import DeputadoData from './DeputadoData'
-import DespesasDeputado from './DespesasDeputado'
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { Nav, NavItem, NavLink } from 'reactstrap'
 
 export default function Deputado() {
   let params = useParams()
-  const [tab, setTab] = React.useState('dados')
   const [state, setState] = React.useState([])
 
   React.useEffect(() => {
@@ -18,22 +16,6 @@ export default function Deputado() {
   }, [])
 
   document.title = `${state.map((dep) => dep.nome)} - Nosso Brasil`
-
-  function handleTabChange() {
-    if (tab == 'dados') {
-      setTab('despesas')
-    } else if (tab == 'despesas') {
-      setTab('dados')
-    }
-  }
-
-  function handleTab() {
-    if (tab == 'dados') {
-      return <DeputadoData deputado={state[0]} />
-    } else if (tab == 'despesas') {
-      return <DespesasDeputado deputado={state[0]} />
-    }
-  }
 
   return (
     <div className="container">
@@ -53,26 +35,13 @@ export default function Deputado() {
           <Nav tabs className="mt-5">
             <NavItem>
               <NavLink
-                className={tab == 'dados' ? 'active' : ''}
-                onClick={() => {
-                  handleTabChange()
-                }}
+                className="active"
               >
                 Dados Completos
               </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                className={tab == 'despesas' ? 'active' : ''}
-                onClick={() => {
-                  handleTabChange()
-                }}
-              >
-                Despesas
-              </NavLink>
-            </NavItem>
+            </NavItem>    
           </Nav>
-          <div className="content">{handleTab()}</div>
+          <div className="content"><DeputadoData deputado={state[0]} /></div>
         </div>
       ))}
     </div>
